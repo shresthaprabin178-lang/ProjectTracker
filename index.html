@@ -1,1 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus | Premium Project Management</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 hidden md:flex flex-col">
+            <div class="p-6 flex items-center gap-3">
+                <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white">
+                    <i data-lucide="layers" class="w-5 h-5"></i>
+                </div>
+                <span class="text-xl font-bold tracking-tight dark:text-white">NEXUS</span>
+            </div>
+
+            <nav class="flex-1 px-4 space-y-2 overflow-y-auto">
+                <a href="#" class="nav-item active" data-view="dashboard">
+                    <i data-lucide="layout-dashboard"></i> Dashboard
+                </a>
+                <a href="#" class="nav-item" data-view="projects">
+                    <i data-lucide="briefcase"></i> Projects
+                </a>
+                <a href="#" class="nav-item" data-view="team">
+                    <i data-lucide="users"></i> Team
+                </a>
+                <a href="#" class="nav-item" data-view="contractors">
+                    <i data-lucide="hard-hat"></i> Contractors
+                </a>
+                <a href="#" class="nav-item" data-view="analytics">
+                    <i data-lucide="bar-chart-3"></i> Analytics
+                </a>
+            </nav>
+
+            <div class="p-4 border-t border-slate-200 dark:border-slate-700">
+                <button id="theme-toggle" class="flex items-center gap-3 px-4 py-2 w-full text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-all">
+                    <i data-lucide="moon" class="dark:hidden"></i>
+                    <i data-lucide="sun" class="hidden dark:block"></i>
+                    <span>Appearance</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto relative custom-scrollbar">
+            <!-- Navbar -->
+            <header class="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 px-8 py-4 flex items-center justify-between">
+                <div class="flex items-center bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-full w-96 border border-transparent focus-within:border-indigo-500 transition-all">
+                    <i data-lucide="search" class="w-4 h-4 text-slate-400"></i>
+                    <input type="text" placeholder="Search projects..." class="bg-transparent border-none focus:ring-0 text-sm ml-2 w-full dark:text-white">
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <div class="relative cursor-pointer">
+                        <i data-lucide="bell" class="text-slate-500 dark:text-slate-400"></i>
+                        <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+                    </div>
+                    <div class="flex items-center gap-3 pl-4 border-l border-slate-200 dark:border-slate-700">
+                        <div class="text-right">
+                            <p class="text-sm font-semibold dark:text-white">Alex Rivera</p>
+                            <p class="text-xs text-slate-500">Project Admin</p>
+                        </div>
+                        <img src="https://ui-avatars.com/api/?name=Alex+Rivera&background=6366f1&color=fff" class="w-10 h-10 rounded-full border-2 border-indigo-100 dark:border-slate-700">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dynamic Section: Dashboard -->
+            <section id="view-dashboard" class="p-8 space-y-8 animate-fade-in">
+                <div class="flex justify-between items-end">
+                    <div>
+                        <h1 class="text-3xl font-bold dark:text-white">Executive Overview</h1>
+                        <p class="text-slate-500 mt-1">Welcome back. Here is what's happening with your projects today.</p>
+                    </div>
+                    <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-xl font-medium shadow-lg shadow-indigo-200 dark:shadow-none transition-all flex items-center gap-2">
+                        <i data-lucide="plus" class="w-4 h-4"></i> New Project
+                    </button>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="stat-card">
+                        <div class="flex justify-between items-start">
+                            <div class="p-3 bg-blue-50 dark:bg-blue-900/30 text-blue-600 rounded-xl"><i data-lucide="activity"></i></div>
+                            <span class="text-xs font-bold text-emerald-500 bg-emerald-50 px-2 py-1 rounded-md">+12%</span>
+                        </div>
+                        <h3 class="text-slate-500 text-sm font-medium mt-4">Total Projects</h3>
+                        <p class="text-2xl font-bold dark:text-white">48</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="flex justify-between items-start">
+                            <div class="p-3 bg-amber-50 dark:bg-amber-900/30 text-amber-600 rounded-xl"><i data-lucide="clock"></i></div>
+                            <span class="text-xs font-bold text-rose-500 bg-rose-50 px-2 py-1 rounded-md">3 Delayed</span>
+                        </div>
+                        <h3 class="text-slate-500 text-sm font-medium mt-4">Ongoing</h3>
+                        <p class="text-2xl font-bold dark:text-white">24</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="flex justify-between items-start">
+                            <div class="p-3 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 rounded-xl"><i data-lucide="dollar-sign"></i></div>
+                        </div>
+                        <h3 class="text-slate-500 text-sm font-medium mt-4">Total Budget</h3>
+                        <p class="text-2xl font-bold dark:text-white">$4.2M</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="flex justify-between items-start">
+                            <div class="p-3 bg-purple-50 dark:bg-purple-900/30 text-purple-600 rounded-xl"><i data-lucide="check-circle"></i></div>
+                        </div>
+                        <h3 class="text-slate-500 text-sm font-medium mt-4">Completion Rate</h3>
+                        <p class="text-2xl font-bold dark:text-white">82%</p>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 chart-container h-96">
+                        <h3 class="font-bold mb-4 dark:text-white">Budget Utilization (Estimated vs Actual)</h3>
+                        <canvas id="budgetChart"></canvas>
+                    </div>
+                    <div class="chart-container h-96">
+                        <h3 class="font-bold mb-4 dark:text-white">Project Status Distribution</h3>
+                        <canvas id="statusChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Recent Projects Table -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm">
+                    <div class="p-6 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+                        <h3 class="font-bold dark:text-white">Critical Projects</h3>
+                        <a href="#" class="text-indigo-600 text-sm font-medium">View all</a>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-50 dark:bg-slate-700/50 text-slate-500 text-xs uppercase font-semibold">
+                                <tr>
+                                    <th class="px-6 py-4">Project Name</th>
+                                    <th class="px-6 py-4">Deadline</th>
+                                    <th class="px-6 py-4">Progress</th>
+                                    <th class="px-6 py-4">Status</th>
+                                    <th class="px-6 py-4">Lead</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 dark:divide-slate-700 dark:text-slate-300">
+                                <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-700/30 transition-colors cursor-pointer">
+                                    <td class="px-6 py-4 font-medium text-slate-900 dark:text-white">Urban Sky Complex</td>
+                                    <td class="px-6 py-4 text-sm">Oct 24, 2026</td>
+                                    <td class="px-6 py-4">
+                                        <div class="w-32 h-2 bg-slate-100 dark:bg-slate-700 rounded-full">
+                                            <div class="bg-indigo-500 h-full rounded-full" style="width: 65%"></div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-700">Delayed</span>
+                                    </td>
+                                    <td class="px-6 py-4 flex -space-x-2">
+                                        <img src="https://i.pravatar.cc/150?u=1" class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800">
+                                        <img src="https://i.pravatar.cc/150?u=2" class="w-8 h-8 rounded-full border-2 border-white dark:border-slate-800">
+                                    </td>
+                                </tr>
+                                <!-- More rows... -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
 
