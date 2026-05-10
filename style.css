@@ -1,28 +1,9 @@
-/* Better touch targets for mobile */
-.nav-item {
-    @apply min-h-[48px] py-3; 
-}
-
-/* Hide scrollbar but allow scrolling on charts */
-.overflow-x-auto {
-    -webkit-overflow-scrolling: touch;
-}
-
-/* Ensure images don't stretch */
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Stat card adjustments for small screens */
-@media (max-width: 640px) {
-    .stat-card {
-        @apply p-4;
-    }
-}
-
-/* Prevent text selection on mobile buttons for a native feel */
-button {
-    -webkit-tap-highlight-color: transparent;
-    user-select: none;
-}
+body { font-family: 'Inter', sans-serif; }
+.custom-scrollbar::-webkit-scrollbar { width: 5px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+.stat-card { @apply bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all duration-300 hover:shadow-lg; }
+.chart-container { @apply bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm; }
+.nav-item { @apply flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 font-medium rounded-xl transition-all hover:bg-slate-100 dark:hover:bg-slate-700; }
+.nav-item.active { @apply bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400; }
+.animate-fade-in { animation: fadeIn 0.4s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
