@@ -1,59 +1,28 @@
-:root {
-    --primary: #6366f1;
-    --sidebar-width: 260px;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-}
-
-/* Custom Scrollbar */
-.custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 10px;
-}
-
-/* Glassmorphism Cards */
-.stat-card {
-    @apply bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300;
-}
-
-.chart-container {
-    @apply bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm;
-}
-
-/* Navigation Items */
+/* Better touch targets for mobile */
 .nav-item {
-    @apply flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 font-medium rounded-xl transition-all duration-200 hover:bg-slate-50 dark:hover:bg-slate-700;
+    @apply min-h-[48px] py-3; 
 }
 
-.nav-item i {
-    @apply w-5 h-5;
+/* Hide scrollbar but allow scrolling on charts */
+.overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
 }
 
-.nav-item.active {
-    @apply bg-indigo-50 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 shadow-sm;
+/* Ensure images don't stretch */
+img {
+    max-width: 100%;
+    height: auto;
 }
 
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Stat card adjustments for small screens */
+@media (max-width: 640px) {
+    .stat-card {
+        @apply p-4;
+    }
 }
 
-.animate-fade-in {
-    animation: fadeIn 0.5s ease-out forwards;
-}
-
-/* Progress Bars */
-.circular-progress {
-    position: relative;
-    width: 100px;
-    height: 100px;
+/* Prevent text selection on mobile buttons for a native feel */
+button {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
 }
